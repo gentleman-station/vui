@@ -4,6 +4,8 @@ stty -echoctl
 
 # TODO: Custom Ports
 
+export DENO_INSTALL="/home/$USER/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 export host="127.0.0.1"
 export ui_port=8008
 
@@ -28,10 +30,13 @@ check_dependencies() {
 			curl -fsSL https://deno.land/install.sh | sh
 			export DENO_INSTALL="/home/$USER/.deno"
 			export PATH="$DENO_INSTALL/bin:$PATH"
-			shells = "bash zsh"
+			shells="bash zsh"
 			for shell in $shells; do
 				dot_filename="~/.${shell}rc"
-				test -f $dot_filename && echo "export DENO_INSTALL="/home/\$USER/.deno\nexport PATH="\$DENO_INSTALL/bin/:\$PATH" >> $dot_filename
+				if [ -f "$dot_filename" ]; then
+					echo "export DENO_INSTALL=\"/home/$USER/.deno\"" >> "$dot_filename"
+					echo "export PATH=\"$DENO_INSTALL/bin/:$PATH\"" >> "$dot_filename"
+				fi
 			done
 		else
 			echo "[!] Please do make sure 'deno' is available in the \$PATH."
@@ -41,6 +46,10 @@ check_dependencies() {
 	if ! command -v snel >/dev/null; then
 		echo "[+] Installing 'snel' (svelte for deno)"
 		deno run --allow-run --allow-read https://deno.land/x/snel/install.ts
+	fi
+	if ! command -v file_server >/dev/null; then
+		echo "[+] Installing deno's HTTP server"
+		deno install --allow-net --allow-read https://deno.land/std@0.106.0/http/file_server.ts
 	fi
 }
 
@@ -82,8 +91,16 @@ main() {
 		done
 	else
 		printf "\n[+] Starting Vulnerable API UI\n\n"
-		snel build  # TODO: Serve the built files.
+		snel build
+		if [[ -d ./output/dist ]]; then
+			mkdir -p ./output/dist
+		fi
+		cp -f ./public/__index.html ./output/index.html
+		cp -f ./public/favicon.ico ./output
+		cp -f ./public/global.css ./output
+		cp -fr ./public/dist/* ./output/dist/
+		file_server ./output
 	fi
 }
 
-main --dev
+main $1

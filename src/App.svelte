@@ -22,9 +22,6 @@
 
 <style>
   main {
-    background: #C9D6FF;
-    background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);
-    background:  linear-gradient(to bottom, #E2E2E2, #C9D6FF) no-repeat fixed;
     text-align: center;
     padding: 1em;
     max-width: 240px;
