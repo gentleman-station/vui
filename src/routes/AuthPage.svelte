@@ -28,7 +28,7 @@
 		    .then(data => {
 			    if ( data['resp'] === 'done' ) {
 				    alert(`User ${creds.username} has been sucessfully registered!`);
-				    document.location = "/login";
+				    document.location = document.location;
 			    }
 		    })
 		    .catch(err => console.error(err));
