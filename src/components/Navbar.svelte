@@ -1,11 +1,12 @@
 <script>
 	import { link } from "svelte-routing";
+	import { navigate } from "svelte-routing";
 </script>
 
 <div class="header header-fixed unselectable header-animated bg-dark">
    <div class="header-brand">
       <div class="nav-item no-hover">
-         <h6 class="title"><a class="text-red-600" use:link href="/">vUI</a></h6>
+         <h6 class="title"><a class="text-red-600" use:link replace href="/">vUI</a></h6>
       </div>
       <div class="nav-item nav-btn" id="header-btn"> <span></span> <span></span> <span></span> </div>
    </div>
@@ -17,8 +18,8 @@
          <div class="nav-item has-sub toggle-hover" id="dropdown">
             <a class="nav-dropdown-link text-red-600">Menu</a> 
             <ul class="dropdown-menu dropdown-animated" role="menu">
-               <li role="menu-item"><a use:link href="/">Home</a></li>
-	       <li role="menu-item"><a use:link href="/auth">Login/Register</a></li>
+               <li role="menu-item"><a use:link replace href="/">Home</a></li>
+	       <li role="menu-item"><a use:link replace href="/auth">Login/Register</a></li>
             </ul>
          </div>
       </div>
