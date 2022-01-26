@@ -91,15 +91,7 @@ main() {
 		done
 	else
 		printf "\n[+] Starting Vulnerable API UI\n\n"
-		snel build
-		if [[ -d ./output/dist ]]; then
-			mkdir -p ./output/dist
-		fi
-		cp -f ./public/__index.html ./output/index.html
-		cp -f ./public/favicon.ico ./output
-		cp -f ./public/global.css ./output
-		cp -fr ./public/dist/* ./output/dist/
-		file_server ./output
+		snel build && cd dist && file_server
 	fi
 }
 
