@@ -7,6 +7,7 @@
 	let email;
 	let tel;
 	let address;
+	let token;
 
 	function register() {
 		if ( name && username && email && address && tel && password ) {
@@ -38,16 +39,27 @@
 	function login() {
 		if ( lusername && lpassword ) {
 			let creds = {"username": lusername, "password": lpassword};
-			fetch(`http://127.0.0.1:8888/select?username=${creds.username}`)
+			fetch("http://127.0.0.1:8888/login", {
+				method: "POST",
+				headers: {"Content-Type": "application/json"},
+				body: JSON.stringify(creds)
+			})
 			.then(resp => resp.json())
 			.then(data => {
+				token = data.token;
+				localStorage.token = token;
 				alert(`You're most welcome!\n\n${JSON.stringify(data)}`);
 				document.location = "/";
 			})
 			.catch(err => console.error(err));
 		}
 	}
+
+	function forgotPassword() {
+		document.querySelectorAll('.frame__body')[1].innerHTML += '<br><br><div class="tag tag--danger">REMEBER IT THEN!</div>';
+	}
 </script>
+
 
 <div class="hero fullscreen">
     <div class="hero-body">
@@ -63,7 +75,7 @@
                                     <div class="form-section">
                                         <label>Username</label>
                                         <div class="input-control">
-                                            <input class="input-contains-icon" id="username" name="username" placeholder="us3rn4m3" type="text" bind:value={lusername}/>
+                                            <input class="input-contains-icon" id="lusername" name="lusername" placeholder="us3rn4m3" type="text" bind:value={lusername}/>
                                             <span class="icon">
                                                 <i class="far fa-wrapper fa-user small"></i>
                                             </span>
@@ -81,7 +93,7 @@
                                     <div class="space"></div>
                                     <button class="btn-info u-pull-right" name="btn" value="login" type="submit" on:click={login}>Log In</button>
                                     <span class="fg-danger info"></span>
-                                    <a href="#forgot-password-model" class="u u-LR">Forgot password?</a>
+				    <a on:click="{forgotPassword}" href="#" class="u u-LR">Forgot password?</a>
                                 </div>
 			    <!-- </form> -->
                         </div>
