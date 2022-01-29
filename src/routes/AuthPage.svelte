@@ -29,7 +29,7 @@
 		    .then(data => {
 			    if ( data['resp'] === 'done' ) {
 				    alert(`User ${creds.username} has been sucessfully registered!`);
-				    document.location = document.location;
+				    document.location = "/";
 			    }
 		    })
 		    .catch(err => console.error(err));
@@ -46,8 +46,10 @@
 			})
 			.then(resp => resp.json())
 			.then(data => {
-				token = data.token;
-				localStorage.token = token;
+				if ( 'token' in data ) {
+					token = data.token;
+					localStorage.token = token;
+				}
 				alert(`You're most welcome!\n\n${JSON.stringify(data)}`);
 				document.location = "/";
 			})
