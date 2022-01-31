@@ -23,14 +23,24 @@
                         <i class="fab fa-wrapper fa-github text-red-600" aria-hidden="true"></i>
                     </span>
                 </a>
-            </div>
+        </div>
 	<div class="nav-item text-center">
                 <a href="https://twitter.com/naryal2580" target="_blank">
                     <span class="icon">
                         <i class="fab fa-wrapper fa-twitter text-red-600" aria-hidden="true"></i>
                     </span>
                 </a>
-            </div>
+        </div>
+	<div class="nav-item text-center">
+                <a href="http://127.0.0.1:8888/redoc" target="_blank">
+                    <span class="icon">
+                        <i class="fa fa-wrapper fa-bolt text-red-600" aria-hidden="true"></i>
+                    </span>
+                </a>
+	</div>
+        </div>
+	<div class="nav-item text-center">
+                <a href="https://twitter.com/naryal2580" target="_blank">
       </div>
       <div class="nav-right">
          <div class="nav-item has-sub toggle-hover" id="dropdown">

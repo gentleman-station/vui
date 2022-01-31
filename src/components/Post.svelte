@@ -1,19 +1,16 @@
 <script>
-	let Post = {
-		content: "A quick brown fox jumps over the lazy dog.",
-		timestamp: "31st of Jan, Mon 12:32 PM"
-		}
+	export let PostInfo;
 </script>
 
 
 <div class="card">
     <br>
-    <div class="content">{Post.content}</div>
-    <div class="card__footer level content px-2">{Post.timestamp}</div>
+    <div class="content">{@html PostInfo.content}</div>
+    <div class="card__footer level content px-2">{PostInfo.author}  ({PostInfo.at})</div>
     <div class="card__action-bar u-center">
-        <button class="btn-transparent outline like"><i class="fa-wrapper fa fa-heart"></i></button>
-        <button class="btn-transparent outline comments"><i class="fa-wrapper fa fa-comments"></i></button>
-        <button class="btn-transparent outline tip"><i class="fa-wrapper fa fa-dollar-sign"></i></button>
+	<button class="btn-transparent outline like"><i class="fa-wrapper fa fa-heart"></i> {PostInfo.likes}</button>
+	<!--<button class="btn-transparent outline comments"><i class="fa-wrapper fa fa-comments"></i></button>-->
+	<!--<button class="btn-transparent outline tip"><i class="fa-wrapper fa fa-dollar-sign"></i></button>-->
     </div>
 </div>
 
