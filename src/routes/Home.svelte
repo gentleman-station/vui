@@ -1,7 +1,17 @@
 <script>
+	let authenticated = false;
+
 	import { link } from "svelte-routing";
+  	import Newsfeed from "@/routes/Newsfeed.svelte";
+
+	if ('token' in localStorage) {
+		authenticated = true;
+	}
 </script>
 
+{#if authenticated}
+	<Newsfeed />
+{:else}
 <section class="section">
   <div class="hero fullscreen">
     <div class="hero-body">
@@ -16,6 +26,7 @@
     </div>
   </div>
 </section>
+{/if}
 
 <style>
   .section {

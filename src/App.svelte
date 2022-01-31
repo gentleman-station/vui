@@ -6,6 +6,7 @@
   import Navbar from "@/components/Navbar.svelte"
   import Home from "@/routes/Home.svelte";
   import AuthPage from "@/routes/AuthPage.svelte";
+  import Footer from "@/components/Footer.svelte"
 
   export let url = "";
 </script>
@@ -19,6 +20,7 @@
     </div>
   </Router>
 </main>
+<Footer />
 
 <style>
   main {

@@ -91,7 +91,7 @@ main() {
 		done
 	else
 		printf "\n[+] Starting Vulnerable API UI\n\n"
-		snel build && cd dist && file_server
+		snel build && cd dist && file_server --host 127.0.0.1 -p 8008
 	fi
 }
 
