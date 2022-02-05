@@ -59,8 +59,8 @@ banner () {
 		figlet -f small "vUI"
 	else
 		echo "      _   _ ___ "
- 		echo " __ _| | | |_ _|"
- 		echo " \ V / |_| || | "
+        echo " __ _| | | |_ _|"
+        echo " \ V / |_| || | "
 		echo "  \_/ \___/|___|"
 	fi
 }
