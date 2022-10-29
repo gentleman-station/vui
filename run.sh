@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 
 stty -echoctl
 
@@ -55,14 +55,10 @@ check_dependencies() {
 
 
 banner () {
-	if command -v figlet >/dev/null; then
-		figlet -f small "vUI"
-	else
-		echo "      _   _ ___ "
+	echo "      _   _ ___ "
         echo " __ _| | | |_ _|"
         echo " \ V / |_| || | "
-		echo "  \_/ \___/|___|"
-	fi
+	echo "  \_/ \___/|___|"
 }
 
 
